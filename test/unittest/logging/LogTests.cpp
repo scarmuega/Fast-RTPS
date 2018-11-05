@@ -25,10 +25,10 @@
 using namespace eprosima::fastrtps;
 using namespace std;
 
-class LogTests: public ::testing::Test 
+class LogTests: public ::testing::Test
 {
    public:
-   LogTests() 
+   LogTests()
    {
       std::unique_ptr<MockConsumer> consumer(new MockConsumer);
       std::unique_ptr<StdoutConsumer> defaultConsumer(new StdoutConsumer);
@@ -66,11 +66,11 @@ TEST_F(LogTests, reporting_options)
    // moving away from the defaults
    Log::ReportFilenames(true);
    Log::ReportFunctions(false);
-   
+
    logError(Reporting, "Error with different reporting options");
    auto consumedEntries = HELPER_WaitForEntries(1);
    ASSERT_EQ(1, consumedEntries.size());
-   
+
    auto entry = consumedEntries.back();
    ASSERT_NE(entry.context.filename, nullptr);
    ASSERT_EQ(entry.context.function, nullptr);

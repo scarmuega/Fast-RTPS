@@ -528,7 +528,7 @@
       </xs:all>
       <xs:attribute name="profile_name" type="stringType" use="required"/>
     </xs:complexType>
-    
+
     <xs:complexType name="rtpsTransportDescriptorType">
       <xs:all minOccurs="0">
         <xs:element name="transport_id" type="stringType"/>
@@ -725,6 +725,22 @@
     <xs:element name="types">
       <xs:complexType>
         <xs:group ref="moduleElems"/>
+      </xs:complexType>
+    </xs:element>
+
+    <!-- Log entry point -->
+    <xs:element name="log">
+      <xs:complexType>
+        <xs:boolean name="use_default"/>
+        <xs:sequence>
+          <xs:element maxOccurs="consumer">
+            <xs:complexType>
+              <xs:element name="class" type="string" minOccurs="1" maxOccurs="1"/>
+              <xs:sequence>
+                <xs:element name="propertyType"/>
+              </xs:sequence>
+            </xs:complexType>
+        </xs:sequence>
       </xs:complexType>
     </xs:element>
 
